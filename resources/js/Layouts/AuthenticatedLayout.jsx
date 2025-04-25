@@ -31,6 +31,24 @@ export default function AuthenticatedLayout({ header, children }) {
                                     Dashboard
                                 </NavLink>
                             </div>
+
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink
+                                    href={route('profile.show')}
+                                    active={route().current('profile.show')}
+                                >
+                                    Profile
+                                </NavLink>
+                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink
+                                    href={route('profile.edit')}
+                                    active={route().current('profile.edit')}
+                                >
+                                    Edit
+                                </NavLink>
+                            </div>
+                            
                         </div>
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
@@ -134,6 +152,8 @@ export default function AuthenticatedLayout({ header, children }) {
                         >
                             Dashboard
                         </ResponsiveNavLink>
+
+                   
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">

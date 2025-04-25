@@ -14,13 +14,14 @@ export default function UpdateProfileInformation({
 
     const { data, setData, patch, errors, processing, recentlySuccessful } =
         useForm({
-            name: user.name,
-            email: user.email,
+            name: user.name || '',
+            email: user.email || '',
+            phone: user.phone || '',
+            bio: user.bio || '',
         });
 
     const submit = (e) => {
         e.preventDefault();
-
         patch(route('profile.update'));
     };
 
@@ -37,6 +38,7 @@ export default function UpdateProfileInformation({
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
+                {/* Name */}
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
@@ -53,6 +55,7 @@ export default function UpdateProfileInformation({
                     <InputError className="mt-2" message={errors.name} />
                 </div>
 
+                {/* Email */}
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -69,6 +72,39 @@ export default function UpdateProfileInformation({
                     <InputError className="mt-2" message={errors.email} />
                 </div>
 
+                {/* Phone */}
+                <div>
+                    <InputLabel htmlFor="phone" value="Phone" />
+
+                    <TextInput
+                        id="phone"
+                        type="text"
+                        className="mt-1 block w-full"
+                        value={data.phone}
+                        onChange={(e) => setData('phone', e.target.value)}
+                        autoComplete="tel"
+                    />
+
+                    <InputError className="mt-2" message={errors.phone} />
+                </div>
+
+                {/* Bio */}
+                <div>
+                    <InputLabel htmlFor="bio" value="Bio" />
+
+                    <TextInput
+                        id="bio"
+                        type="text"
+                        className="mt-1 block w-full"
+                        value={data.bio}
+                        onChange={(e) => setData('bio', e.target.value)}
+                        autoComplete="off"
+                    />
+
+                    <InputError className="mt-2" message={errors.bio} />
+                </div>
+
+                {/* Email verification notice */}
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
                         <p className="mt-2 text-sm text-gray-800">

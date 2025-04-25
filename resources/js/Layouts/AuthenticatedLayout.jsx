@@ -48,6 +48,18 @@ export default function AuthenticatedLayout({ header, children }) {
                                     Edit
                                 </NavLink>
                             </div>
+
+
+                            {user.role === 'superadmin' && (
+    <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+        <NavLink
+            href={route('admin.users.index')}
+            active={route().current('admin.users.index')}
+        >
+            Users
+        </NavLink>
+    </div>
+)}
                             
                         </div>
 

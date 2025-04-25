@@ -27,6 +27,7 @@ class ProfileUpdateRequest extends FormRequest
             ],
             'phone' => ['nullable', 'string', 'max:20'], // <-- new
             'bio'   => ['nullable', 'string', 'max:1000'],
+            'image_url' => ['nullable', 'url'],
         ];
     }
 }

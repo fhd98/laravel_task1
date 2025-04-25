@@ -18,6 +18,7 @@ export default function UpdateProfileInformation({
             email: user.email || '',
             phone: user.phone || '',
             bio: user.bio || '',
+            image_url: user.image_url || '', // New field
         });
 
     const submit = (e) => {
@@ -41,7 +42,6 @@ export default function UpdateProfileInformation({
                 {/* Name */}
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
-
                     <TextInput
                         id="name"
                         className="mt-1 block w-full"
@@ -51,14 +51,12 @@ export default function UpdateProfileInformation({
                         isFocused
                         autoComplete="name"
                     />
-
                     <InputError className="mt-2" message={errors.name} />
                 </div>
 
                 {/* Email */}
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
-
                     <TextInput
                         id="email"
                         type="email"
@@ -68,14 +66,12 @@ export default function UpdateProfileInformation({
                         required
                         autoComplete="username"
                     />
-
                     <InputError className="mt-2" message={errors.email} />
                 </div>
 
                 {/* Phone */}
                 <div>
                     <InputLabel htmlFor="phone" value="Phone" />
-
                     <TextInput
                         id="phone"
                         type="text"
@@ -84,14 +80,12 @@ export default function UpdateProfileInformation({
                         onChange={(e) => setData('phone', e.target.value)}
                         autoComplete="tel"
                     />
-
                     <InputError className="mt-2" message={errors.phone} />
                 </div>
 
                 {/* Bio */}
                 <div>
                     <InputLabel htmlFor="bio" value="Bio" />
-
                     <TextInput
                         id="bio"
                         type="text"
@@ -100,8 +94,21 @@ export default function UpdateProfileInformation({
                         onChange={(e) => setData('bio', e.target.value)}
                         autoComplete="off"
                     />
-
                     <InputError className="mt-2" message={errors.bio} />
+                </div>
+
+                {/* Image URL */}
+                <div>
+                    <InputLabel htmlFor="image_url" value="Image URL" />
+                    <TextInput
+                        id="image_url"
+                        type="text"
+                        className="mt-1 block w-full"
+                        value={data.image_url}
+                        onChange={(e) => setData('image_url', e.target.value)}
+                        autoComplete="off"
+                    />
+                    <InputError className="mt-2" message={errors.image_url} />
                 </div>
 
                 {/* Email verification notice */}
@@ -121,8 +128,7 @@ export default function UpdateProfileInformation({
 
                         {status === 'verification-link-sent' && (
                             <div className="mt-2 text-sm font-medium text-green-600">
-                                A new verification link has been sent to your
-                                email address.
+                                A new verification link has been sent to your email address.
                             </div>
                         )}
                     </div>
@@ -138,9 +144,7 @@ export default function UpdateProfileInformation({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm text-gray-600">
-                            Saved.
-                        </p>
+                        <p className="text-sm text-gray-600">Saved.</p>
                     </Transition>
                 </div>
             </form>

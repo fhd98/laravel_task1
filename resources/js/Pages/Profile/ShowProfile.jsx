@@ -22,6 +22,18 @@ export default function ShowProfile({ mustVerifyEmail, status }) {
                     <div className="bg-white shadow sm:rounded-lg p-6">
                         {!isEditing ? (
                             <div className="space-y-4">
+
+                                {/* Profile Image */}
+                                {user.image_url && (
+                                    <div className="flex justify-center">
+                                        <img
+                                            src={user.image_url}
+                                            alt="Profile"
+                                            className="w-32 h-32 rounded-full object-cover border"
+                                        />
+                                    </div>
+                                )}
+
                                 <div>
                                     <p className="text-sm font-medium text-gray-700">Name</p>
                                     <p className="text-lg text-gray-900">{user.name}</p>
